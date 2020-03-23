@@ -24,6 +24,7 @@
             "email": "info@montonio.com"
         }
     ],
+    "license": "AGPL-3.0-only",
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "nest build",
