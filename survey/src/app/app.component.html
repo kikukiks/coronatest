@@ -11,7 +11,10 @@
         <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png"
              alt="Ministry of Social Affairs" class="logo">
 
-        <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a>
+        <div class="footer-info">
+            <span class="updated-at">{{'updated_at' | translate}} 25.03.2020</span>
+            <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a>
+        </div>
     </div>
     <!-- <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a> -->
 </div>
