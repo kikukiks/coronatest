@@ -1,5 +1,42 @@
 .view-container {
     background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+}
+
+.logos, .mobile-logos {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px 15px 15px 15px;
+    display: flex;
+    position: relative;
+    flex-flow: row nowrap;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+
+    .logo {
+        width: auto;
+        max-height: 45px;
+
+        &:first-child {
+            margin-right: 20px;
+            padding-right: 20px;
+            // border-right: 1px solid #ccc;
+        }
+    }
+
+    .authors {
+        color: #bbb;
+        cursor: pointer;
+        margin-left: auto;
+        text-decoration: underline;
+    }
+}
+
+.mobile-logos {
+    display: none;
+    padding: 15px 0;
 }
 
 .modal-container {
@@ -27,18 +64,18 @@
             max-width: 600px;
             background: #ffffff;
             box-sizing: border-box;
-    
+
             &.center {
                 text-align: center;
             }
-    
+
             h3 {
                 margin-top: 0;
             }
-    
+
             p {
                 margin: 20px 0;
-    
+
                 &.people-list {
                     line-height: 18pt;
                 }
@@ -48,7 +85,7 @@
                 margin: 25px 0;
                 padding-left: 25px;
             }
-    
+
             .btn-close {
                 border-radius: 100px;
                 width: 100%;

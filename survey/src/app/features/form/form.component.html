@@ -9,14 +9,19 @@
                     <mat-radio-group formControlName="intent" required>
                         <mat-radio-button class="example-radio-button" value="self">
                             {{'self' | translate}}
-                        </mat-radio-button><br><br>
+                        </mat-radio-button>
+                        <br><br>
                         <mat-radio-button class="example-radio-button" value="family">
                             {{'family' | translate}}
-                        </mat-radio-button><br><br>
+                        </mat-radio-button>
+                        <br><br>
                         <mat-radio-button class="example-radio-button" value="test">
                             {{'testing' | translate}}
                         </mat-radio-button>
                     </mat-radio-group>
+                    <br>
+                    <br>
+                    <p class="light">{{'if_foreign_choose_testing' | translate}}</p>
                 </form>
             </mat-step>
 
@@ -31,7 +36,8 @@
                     <h4>{{'age' | translate}}</h4>
                     <mat-form-field>
                         <mat-label>{{'age' | translate}}</mat-label>
-                        <input type="tel" matInput placeholder="{{'enter_age' | translate}}" formControlName="age" required>
+                        <input type="tel" matInput placeholder="{{'enter_age' | translate}}" formControlName="age"
+                               required>
                     </mat-form-field>
                 </form>
             </mat-step>
@@ -48,51 +54,35 @@
                 </form>
             </mat-step>
 
-            <mat-step [stepControl]="travelling">
-                <form [formGroup]="travelling">
-                    <ng-template matStepLabel>{{'travelling' | translate}}</ng-template>
-                    <h4>{{'travelling_14_days' | translate}}</h4>
-                    <!-- <div class="column-wrapper">
-                        <div class="column">
-                            <p>{{'china' | translate}}</p>
-                            <p>{{'south_korea' | translate}}</p>
-                            <p>{{'singapore' | translate}}</p>
-                            <p>{{'iran' | translate}}</p>
-                            <p>{{'italy' | translate}}</p>
-                            <p>{{'france' | translate}}</p>
-                            <p>{{'germany' | translate}}</p>
-                        </div>
-                        <div class="column">
-                            <p>{{'spain' | translate}}</p>
-                            <p>{{'belgium' | translate}}</p>
-                            <p>{{'denmark' | translate}}</p>
-                            <p>{{'norway' | translate}}</p>
-                            <p>{{'sweden' | translate}}</p>
-                            <p>{{'egypt' | translate}}</p>
-                        </div>
-                    </div> -->
-                    <mat-button-toggle-group formControlName="high_risk_country" required>
-                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
-                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>
-                    </mat-button-toggle-group>
-                </form>
-            </mat-step>
-
-            <mat-step [stepControl]="exposure">
-                <form [formGroup]="exposure">
-                    <ng-template matStepLabel>{{'exposure' | translate}}</ng-template>
-                    <h4>{{'close_contact_14_days' | translate}}</h4>
-                    <p>{{'close_contact_information' | translate}}</p>
-                    <br>
-                    <a class="rand-link" target="_blank" (click)="pageService.openModal('close_contact')">{{ 'link_what_is_exposure' | translate }}</a>
-                    <br><br>
-                    <mat-button-toggle-group formControlName="exposure" required>
-                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
-                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>
-                    </mat-button-toggle-group>
-                </form>
-            </mat-step>
-
+            <!--            <mat-step [stepControl]="travelling">-->
+            <!--                <form [formGroup]="travelling">-->
+            <!--                    <ng-template matStepLabel>{{'travelling' | translate}}</ng-template>-->
+            <!--                    <h4>{{'travelling_14_days' | translate}}</h4>-->
+            <!--                    &lt;!&ndash; <div class="column-wrapper">-->
+            <!--                        <div class="column">-->
+            <!--                            <p>{{'china' | translate}}</p>-->
+            <!--                            <p>{{'south_korea' | translate}}</p>-->
+            <!--                            <p>{{'singapore' | translate}}</p>-->
+            <!--                            <p>{{'iran' | translate}}</p>-->
+            <!--                            <p>{{'italy' | translate}}</p>-->
+            <!--                            <p>{{'france' | translate}}</p>-->
+            <!--                            <p>{{'germany' | translate}}</p>-->
+            <!--                        </div>-->
+            <!--                        <div class="column">-->
+            <!--                            <p>{{'spain' | translate}}</p>-->
+            <!--                            <p>{{'belgium' | translate}}</p>-->
+            <!--                            <p>{{'denmark' | translate}}</p>-->
+            <!--                            <p>{{'norway' | translate}}</p>-->
+            <!--                            <p>{{'sweden' | translate}}</p>-->
+            <!--                            <p>{{'egypt' | translate}}</p>-->
+            <!--                        </div>-->
+            <!--                    </div> &ndash;&gt;-->
+            <!--                    <mat-button-toggle-group formControlName="high_risk_country" required>-->
+            <!--                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>-->
+            <!--                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>-->
+            <!--                    </mat-button-toggle-group>-->
+            <!--                </form>-->
+            <!--            </mat-step>-->
             <mat-step [stepControl]="symptoms">
                 <form [formGroup]="symptoms">
                     <ng-template matStepLabel>{{'symptoms' | translate}}</ng-template>
@@ -119,6 +109,27 @@
                     </mat-form-field>
                 </form>
             </mat-step>
+            <mat-step [stepControl]="exposure">
+                <form [formGroup]="exposure">
+                    <ng-template matStepLabel>{{'exposure' | translate}}</ng-template>
+                    <h4>{{'close_contact_14_days' | translate}}</h4>
+                    <p>{{'close_contact_information' | translate}}</p>
+                    <br>
+                    <a class="rand-link" target="_blank"
+                       (click)="pageService.openModal('close_contact')">{{ 'link_what_is_exposure' | translate }}</a>
+                    <br><br>
+                    <mat-button-toggle-group formControlName="close_contact" required>
+                        <mat-button-toggle class="small" [value]="'yes'">{{'yes' | translate}}</mat-button-toggle>
+                        <mat-button-toggle class="small" [value]="'no'">{{'no' | translate}}</mat-button-toggle>
+                        <mat-button-toggle class="small" [value]="'maybe'">{{'maybe' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <br>
+                    <br>
+                    <p class="light">Kui olete olnud lähikontaktis kellegagi, kel olid hingamisteede viirushaiguse sümptomid (köha, hingamisraskused, palavik), aga te ei tea, kas tal on diagnoositud COVID-19, vastake „võib-olla“</p>
+                </form>
+            </mat-step>
+
+
             <mat-step>
                 <form [formGroup]="location">
                     <ng-template matStepLabel>{{'location' | translate}}</ng-template>
@@ -126,7 +137,8 @@
                     <p>{{'share_location_explanation' | translate}}</p>
                     <br>
                     <mat-button-toggle-group formControlName="shareLocation" required>
-                        <mat-button-toggle value="true" (click)="getLocation()">{{'share' | translate}}</mat-button-toggle>
+                        <mat-button-toggle value="true"
+                                           (click)="getLocation()">{{'share' | translate}}</mat-button-toggle>
                         <mat-button-toggle value="false">{{'no_do_not_share' | translate}}</mat-button-toggle>
                     </mat-button-toggle-group>
                 </form>
@@ -146,15 +158,4 @@
             </button>
         </div>
     </div>
-
-</div>
-
-<div class="logos">
-    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
-    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo">
-
-    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
-    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
-
-    <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a>
 </div>

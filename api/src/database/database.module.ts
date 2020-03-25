@@ -26,7 +26,6 @@ import { SequelizeModule } from '@nestjs/sequelize';
             }),
             inject: [ConfigService]
         })
-        // SequelizeModule.forFeature([SessionsAccounts]),
     ],
     controllers: [],
     providers: [],

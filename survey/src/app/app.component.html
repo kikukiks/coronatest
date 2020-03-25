@@ -1,5 +1,18 @@
 <div class="view-container">
     <router-outlet></router-outlet>
+    <div class="logos">
+        <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet"
+             class="logo">
+        <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board"
+             class="logo">
+
+        <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png"
+             alt="Sotsiaalministeerium" class="logo">
+        <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png"
+             alt="Ministry of Social Affairs" class="logo">
+
+        <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a>
+    </div>
     <!-- <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a> -->
 </div>
 

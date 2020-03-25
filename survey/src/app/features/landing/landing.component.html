@@ -1,12 +1,5 @@
 <div class="view-wrapper landing">
     <div class="container">
-        <div class="logos">
-            <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
-            <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo">
-            
-            <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
-            <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
-        </div>
         <div class="card">
             <h2>{{'coronavirus_test' | translate}}</h2>
             <p>{{'coronavirus_test_information_1' | translate}}</p>
@@ -19,7 +12,8 @@
             <ng-container *ngIf="localeService.locale">
                 <mat-form-field>
                     <mat-label>Keel/Language/Язык</mat-label>
-                    <mat-select [(ngModel)]="localeService.locale" (ngModelChange)="localeService.changeLocale(localeService.locale)">
+                    <mat-select [(ngModel)]="localeService.locale"
+                                (ngModelChange)="localeService.changeLocale(localeService.locale)">
                         <mat-option value="et">{{'et' | translate}}</mat-option>
                         <mat-option value="en_US">{{'en_US' | translate}}</mat-option>
                         <mat-option value="ru">{{'ru' | translate}}</mat-option>
@@ -30,3 +24,4 @@
         <button [routerLink]="['/form']" class="cta-button">{{'start' | translate}}</button>
     </div>
 </div>
+
