@@ -9,7 +9,6 @@ export class SubmissionsService {
     constructor(@InjectModel(Submission) private readonly submissionModel: typeof Submission) {}
 
     async createSubmission(dto: CreateSubmissionDto, sessionID, IPAddress) {
-
         // determine scenario
         let scenario = this.getScenario(dto);
 
@@ -27,12 +26,11 @@ export class SubmissionsService {
     }
 
     getScenario(dto) {
-        let riskGroup = (dto.age >= 80 || dto.chronic_conditions) ? true : false;
+        let riskGroup = dto.age >= 80 || dto.chronic_conditions ? true : false;
 
         // Has high risk symptoms
         if (dto.symptoms.some(symptom => ['fever', 'cough', 'shortness_of_breath'].includes(symptom))) {
             // *** SEVERE SYMPTOMS ***
-            // fever > 39 & 1 extra symptom (not fever)
             if (
                 dto.fever_temperature > 39 &&
                 dto.symptoms.some(symptom => ['cough', 'shortness_of_breath'].includes(symptom))
@@ -48,13 +46,13 @@ export class SubmissionsService {
 
             // *** RISK GROUP ***
             else if (riskGroup) {
-                if (dto.high_risk_country === true || dto.exposure === true) {
+                if (dto.close_contact === 'yes') {
                     return {
                         probability: 'HIGH',
                         risk_message: 'risk_group_symptoms_message',
                         act_message: 'how_to_act_health_board',
                         scenario: 'SCENARIO_8',
-                        scenario_description: 'Moderate or mild symptoms, risk group, risk factor'
+                        scenario_description: 'Moderate or mild symptoms, risk group, close contact'
                     };
                 } else {
                     return {
@@ -62,71 +60,99 @@ export class SubmissionsService {
                         risk_message: 'risk_group_symptoms_message',
                         act_message: 'how_to_act_health_board',
                         scenario: 'SCENARIO_9',
-                        scenario_description: 'Moderate or mild symptoms, risk group, no risk factor'
+                        scenario_description: 'Moderate or mild symptoms, risk group, no close contact'
                     };
                 }
             }
 
-            // *** MEDIUM SYMPTOMS ***
+            // *** MODERATE SYMPTOMS ***
             else if (
-                // fever > 38 & 1 extra symptom
                 (dto.fever_temperature >= 38 &&
                     dto.symptoms.some(symptom => ['cough', 'shortness_of_breath'].includes(symptom))) ||
-                // or shortness of breath
                 dto.symptoms.includes('shortness_of_breath')
             ) {
-                // medium symptoms + risk
-                if (dto.high_risk_country === true || dto.exposure === true) {
+                // medium symptoms + close contact
+                if (dto.close_contact === 'yes') {
                     return {
                         probability: 'HIGH',
                         risk_message: 'high_risk_medium_symptoms_message',
                         act_message: 'how_to_act_health_board',
                         scenario: 'SCENARIO_4',
-                        scenario_description: 'Moderate symptoms, risk factor'
+                        scenario_description: 'Moderate symptoms, close contact'
                     };
-                } else {
+                }
+                // medium symptoms + maybe close contact
+                else if (dto.close_contact === 'maybe') {
                     return {
                         probability: 'MEDIUM',
                         risk_message: 'medium_risk_medium_symptoms_message',
                         act_message: 'how_to_act_health_board',
+                        scenario: 'SCENARIO_12',
+                        scenario_description: 'Moderate symptoms, maybe close contact'
+                    };
+                } else {
+                    return {
+                        probability: 'LOW',
+                        risk_message: 'low_risk_medium_symptoms_message',
+                        act_message: 'how_to_act_health_board',
                         scenario: 'SCENARIO_7',
-                        scenario_description: 'Moderate symptoms, no risk factor'
+                        scenario_description: 'Moderate symptoms, no close contact'
                     };
                 }
             }
 
-            // *** LIGHT SYMPTOMS ***
-            // fever or cough + risk
-            else if (dto.high_risk_country === true || dto.exposure === true) {
+            // *** MILD SYMPTOMS ***
+            // fever or cough + close contact
+            else if (dto.close_contact === 'yes') {
                 return {
                     probability: 'HIGH',
                     risk_message: 'high_risk_light_symptoms_message',
                     act_message: 'how_to_act_health_board',
                     scenario: 'SCENARIO_3',
-                    scenario_description: 'Mild symptoms, risk factor'
+                    scenario_description: 'Mild symptoms, close contact'
                 };
             }
-            // fever or cough
+            // fever or cough + maybe close contact
+            else if (dto.close_contact === 'maybe') {
+                return {
+                    probability: 'MEDIUM',
+                    risk_message: 'medium_risk_light_symptoms_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_11',
+                    scenario_description: 'Mild symptoms, maybe close contact'
+                };
+            }
+            // fever or cough, no close contact
             else {
                 return {
                     probability: 'MEDIUM',
                     risk_message: 'low_risk_light_symptoms_message',
                     act_message: 'how_to_act_health_board',
                     scenario: 'SCENARIO_6',
-                    scenario_description: 'Mild symptoms, no risk factor'
+                    scenario_description: 'Mild symptoms, no close contact'
                 };
             }
         }
-        // no symptoms
+        // *** NO SYMPTOMS ***
         else {
-            // risk factor
-            if (dto.high_risk_country === true || dto.exposure === true) {
+            // close contact yes
+            if (dto.close_contact === 'yes') {
                 return {
                     probability: 'HIGH',
                     risk_message: 'high_risk_no_symptoms_message',
                     act_message: 'how_to_act_health_board',
                     scenario: 'SCENARIO_2',
-                    scenario_description: 'Healthy patient, risk factor'
+                    scenario_description: 'Healthy patient, close contact'
+                };
+            }
+            // close contact maybe
+            else if (dto.close_contact === 'maybe') {
+                return {
+                    probability: 'MEDIUM',
+                    risk_message: 'medium_risk_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_10',
+                    scenario_description: 'Healthy patient, maybe close contact'
                 };
             }
             // healthy? :)
@@ -136,7 +162,7 @@ export class SubmissionsService {
                     risk_message: 'low_risk_message',
                     act_message: 'how_to_act_health_board',
                     scenario: 'SCENARIO_1',
-                    scenario_description: 'Healthy patient, no risk factor'
+                    scenario_description: 'Healthy patient, no close contact'
                 };
             }
         }
@@ -154,9 +180,7 @@ export class SubmissionsService {
                     [Op.gte]: idGte
                 }
             },
-            order: [
-                ['id', sortDirection]
-            ],
+            order: [['id', sortDirection]],
             limit,
             offset
         });

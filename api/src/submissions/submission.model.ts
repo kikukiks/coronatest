@@ -50,6 +50,12 @@ export default class Submission extends Model<Submission> {
     exposure: boolean;
 
     @Column({
+        type: DataType.TEXT, // yes, no, maybe
+        allowNull: true
+    })
+    close_contact: string;
+
+    @Column({
         type: DataType.JSONB,
         allowNull: true
     })
