@@ -8,26 +8,9 @@
                 <div class="bubble">{{ i + 1 }}</div>
                 <span [innerHTML]="instruction | translate"></span>
             </div>
-            <p *ngIf="pageService.submissionResult.scenario == 'SCENARIO_8' || pageService.submissionResult.scenario == 'SCENARIO_9'" 
-                class="footnote" [innerHTML]="'testing_overview_link' | translate"></p>
+            <p *ngIf="pageService.submissionResult.scenario == 'SCENARIO_8' || pageService.submissionResult.scenario == 'SCENARIO_9'"
+               class="footnote" [innerHTML]="'testing_overview_link' | translate"></p>
         </div>
     </div>
-
-    <div class="mobile-logos">
-        <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
-        <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo">
-    
-        <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
-        <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
-    </div>
-</div>
-<div class="logos">
-    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
-    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo">
-
-    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
-    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
-
-    <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a>
 </div>
 
