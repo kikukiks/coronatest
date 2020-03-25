@@ -113,8 +113,6 @@
                 <form [formGroup]="exposure">
                     <ng-template matStepLabel>{{'exposure' | translate}}</ng-template>
                     <h4>{{'close_contact_14_days' | translate}}</h4>
-                    <p>{{'close_contact_information' | translate}}</p>
-                    <br>
                     <a class="rand-link" target="_blank"
                        (click)="pageService.openModal('close_contact')">{{ 'link_what_is_exposure' | translate }}</a>
                     <br><br>
@@ -125,7 +123,12 @@
                     </mat-button-toggle-group>
                     <br>
                     <br>
-                    <p class="light">Kui olete olnud lähikontaktis kellegagi, kel olid hingamisteede viirushaiguse sümptomid (köha, hingamisraskused, palavik), aga te ei tea, kas tal on diagnoositud COVID-19, vastake „võib-olla“</p>
+                    <p class="light">
+                        {{'choose_close_contact_maybe' | translate}}
+                        <a class="rand-link" target="_blank"
+                            (click)="pageService.openModal('close_contact')"> {{ 'in_close_contact' | translate }} </a>
+                        {{'choose_close_contact_maybe_continued' | translate}}
+                    </p>
                 </form>
             </mat-step>
 
