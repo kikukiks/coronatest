@@ -12,6 +12,12 @@ export class SubmissionsController {
     async createSubmission(@Body() createSubmissionDto: CreateSubmissionDto, @Session() session, @Req() req): Promise<any> {
         const sessionID = req.sessionID;
         const ipAddress = req.headers['x-clientip'] || req.connection.remoteAddress;
+
+        if (!createSubmissionDto.close_contact) {
+            if (createSubmissionDto.exposure || createSubmissionDto.high_risk_country) createSubmissionDto.close_contact = 'yes';
+            else createSubmissionDto.close_contact = 'no';
+        }
+
         return await this.submissionsService.createSubmission(createSubmissionDto, sessionID, ipAddress);
     }
 

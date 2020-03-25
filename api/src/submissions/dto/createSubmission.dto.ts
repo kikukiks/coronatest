@@ -1,13 +1,26 @@
-import { IsString, IsArray, IsNumber, Min, IsUUID, Max, MaxLength, IsBoolean, IsObject, IsOptional, IsEnum } from 'class-validator';
+import {
+    IsString,
+    IsArray,
+    IsNumber,
+    Min,
+    IsUUID,
+    Max,
+    MaxLength,
+    IsBoolean,
+    IsObject,
+    IsOptional,
+    IsEnum
+} from 'class-validator';
 
 export class CreateSubmissionDto {
-
     @IsString()
-    @MaxLength(255) @IsOptional()
+    @MaxLength(255)
+    @IsOptional()
     latitude: string;
 
     @IsString()
-    @MaxLength(255) @IsOptional()
+    @MaxLength(255)
+    @IsOptional()
     longitude: string;
 
     @IsEnum(['male', 'female'])
@@ -20,10 +33,16 @@ export class CreateSubmissionDto {
     age: number;
 
     @IsBoolean()
+    @IsOptional()
     high_risk_country: boolean;
-    
+
     @IsBoolean()
+    @IsOptional()
     exposure: boolean;
+
+    @IsEnum(['yes', 'no', 'maybe'])
+    @IsOptional()
+    close_contact: string;
 
     @IsArray()
     symptoms: object;
@@ -38,13 +57,15 @@ export class CreateSubmissionDto {
     @IsOptional()
     chronic_conditions: boolean;
 
-    @IsString() @IsOptional()
+    @IsString()
+    @IsOptional()
     email: string;
 
-    @IsString() @IsOptional()
+    @IsString()
+    @IsOptional()
     phone_number: string;
 
-    @IsEnum(['self', 'family', 'test']) @IsOptional()
+    @IsEnum(['self', 'family', 'test'])
+    @IsOptional()
     intent: string;
-    
 }

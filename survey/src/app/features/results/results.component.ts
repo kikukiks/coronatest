@@ -74,6 +74,26 @@ export class ResultsComponent implements OnInit {
             "quarantine_2_weeks",
             "only_call_112_in_an_emergecny",
             "close_people_no_quarantine"
+        ],
+        SCENARIO_10: [
+            "avoid_contact",
+            "monitor_health_risk_group",
+            "retake_test_when_sick",
+            "only_call_112_in_an_emergecny"
+        ],
+        SCENARIO_11: [
+            "home_care_monitor",
+            "monitor_health_detailed",
+            "risk_group_contact_doctor",
+            "only_call_112_in_an_emergecny",
+            "close_people_no_quarantine"
+        ],
+        SCENARIO_12: [
+            "home_care_monitor",
+            "call_your_general_practicioner",
+            "check_your_health",
+            "only_call_112_in_an_emergecny",
+            "close_people_no_quarantine"
         ]
     };
 
