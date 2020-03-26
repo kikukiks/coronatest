@@ -14,6 +14,7 @@ import {LocaleService} from 'src/app/core/services/locale.service';
 export class FormComponent implements OnInit, AfterViewInit {
     intent: FormGroup;
     chronic_conditions: FormGroup;
+    testing: FormGroup;
     location: FormGroup;
     general: FormGroup;
     // travelling: FormGroup;
@@ -67,12 +68,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             ]),
         });
 
-        // this.travelling = this.formBuilder.group({
-        //     high_risk_country: new FormControl(null, [Validators.required])
-        // });
-
         this.exposure = this.formBuilder.group({
-            exposure: new FormControl(false),
             close_contact: new FormControl(null, [Validators.required]),
         });
 
@@ -92,7 +88,11 @@ export class FormComponent implements OnInit, AfterViewInit {
                 Validators.required,
                 Validators.min(36),
                 Validators.max(42),
-            ])
+            ]),
+        });
+
+        this.testing = this.formBuilder.group({
+            has_been_tested: new FormControl(null, [Validators.required]),
         });
     }
 
@@ -218,9 +218,9 @@ export class FormComponent implements OnInit, AfterViewInit {
                 if (!this.hasFever) {
                     return {
                         form: this.location,
-                        method: this.submitForm,
-                        class: 'submit-btn',
-                        text: 'submit',
+                        method: this.nextStep,
+                        class: '',
+                        text: 'next',
                     };
                 } else {
                     return {
@@ -231,8 +231,23 @@ export class FormComponent implements OnInit, AfterViewInit {
                     };
                 }
             case 6:
+                if (!this.hasFever) {
+                    return {
+                        form: this.testing,
+                        method: this.submitForm,
+                        class: 'submit-btn',
+                        text: 'submit',
+                    };
+                }
                 return {
                     form: this.location,
+                    method: this.nextStep,
+                    class: '',
+                    text: 'next',
+                };
+            case 7:
+                return {
+                    form: this.testing,
                     method: this.submitForm,
                     class: 'submit-btn',
                     text: 'submit',
@@ -257,15 +272,15 @@ export class FormComponent implements OnInit, AfterViewInit {
             .sendSurvey({
                 ...this.intent.value,
                 ...this.chronic_conditions.value,
+                ...this.testing.value,
                 gender: this.general.get('gender').value,
                 age: +this.general.get('age').value,
-                // ...this.travelling.value,
                 ...this.exposure.value,
                 high_risk_country: false,
                 latitude: this.location.get('latitude').value ? '' + this.location.get('latitude').value : null,
                 longitude: this.location.get('longitude').value ? '' + this.location.get('longitude').value : null,
                 symptoms: this.parseSymptomsToArray(this.symptoms.value),
-                fever_temperature
+                fever_temperature,
             })
             .then(res => {
                 console.log(res);

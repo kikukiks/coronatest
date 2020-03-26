@@ -80,4 +80,18 @@
     </div>
 </div>
 
+
+<div *ngIf="pageService.modals['location'].opened" class="modal-container">
+    <div class="modal-wrapper">
+        <div class="modal">
+            <p>{{ 'location_information_text' | translate }}</p>
+            <button
+                class="btn-close mat-button" mat-button
+                (click)="pageService.closeModal('location')">
+                {{'close' | translate}}
+            </button>
+        </div>
+    </div>
+</div>
+
 <!-- <router-outlet></router-outlet> -->

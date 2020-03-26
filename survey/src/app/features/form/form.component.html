@@ -54,35 +54,6 @@
                 </form>
             </mat-step>
 
-            <!--            <mat-step [stepControl]="travelling">-->
-            <!--                <form [formGroup]="travelling">-->
-            <!--                    <ng-template matStepLabel>{{'travelling' | translate}}</ng-template>-->
-            <!--                    <h4>{{'travelling_14_days' | translate}}</h4>-->
-            <!--                    &lt;!&ndash; <div class="column-wrapper">-->
-            <!--                        <div class="column">-->
-            <!--                            <p>{{'china' | translate}}</p>-->
-            <!--                            <p>{{'south_korea' | translate}}</p>-->
-            <!--                            <p>{{'singapore' | translate}}</p>-->
-            <!--                            <p>{{'iran' | translate}}</p>-->
-            <!--                            <p>{{'italy' | translate}}</p>-->
-            <!--                            <p>{{'france' | translate}}</p>-->
-            <!--                            <p>{{'germany' | translate}}</p>-->
-            <!--                        </div>-->
-            <!--                        <div class="column">-->
-            <!--                            <p>{{'spain' | translate}}</p>-->
-            <!--                            <p>{{'belgium' | translate}}</p>-->
-            <!--                            <p>{{'denmark' | translate}}</p>-->
-            <!--                            <p>{{'norway' | translate}}</p>-->
-            <!--                            <p>{{'sweden' | translate}}</p>-->
-            <!--                            <p>{{'egypt' | translate}}</p>-->
-            <!--                        </div>-->
-            <!--                    </div> &ndash;&gt;-->
-            <!--                    <mat-button-toggle-group formControlName="high_risk_country" required>-->
-            <!--                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>-->
-            <!--                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>-->
-            <!--                    </mat-button-toggle-group>-->
-            <!--                </form>-->
-            <!--            </mat-step>-->
             <mat-step [stepControl]="symptoms">
                 <form [formGroup]="symptoms">
                     <ng-template matStepLabel>{{'symptoms' | translate}}</ng-template>
@@ -132,17 +103,31 @@
                 </form>
             </mat-step>
 
-
             <mat-step>
                 <form [formGroup]="location">
                     <ng-template matStepLabel>{{'location' | translate}}</ng-template>
                     <h4>{{'share_your_location_information' | translate}}</h4>
-                    <p>{{'share_location_explanation' | translate}}</p>
+                    <p>{{'location_anonymous' | translate}}</p>
+                    <br>
+                    <a (click)="pageService.openModal('location')">{{'location_anonymous_information' | translate}}</a>
+                    <br>
                     <br>
                     <mat-button-toggle-group formControlName="shareLocation" required>
                         <mat-button-toggle value="true"
                                            (click)="getLocation()">{{'share' | translate}}</mat-button-toggle>
                         <mat-button-toggle value="false">{{'no_do_not_share' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <form [formGroup]="testing">
+                    <ng-template matStepLabel>{{'info' | translate}}</ng-template>
+                    <h4>{{'have_you_been_tested_or_examined' | translate}}</h4>
+                    <br>
+                    <mat-button-toggle-group formControlName="has_been_tested" required>
+                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
+                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>
                     </mat-button-toggle-group>
                 </form>
             </mat-step>

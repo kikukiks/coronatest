@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class PageService {
 
@@ -14,28 +14,33 @@ export class PageService {
         'close_contact': {
             opened: false,
             data: null
-        }
+        },
+        'location': {
+            opened: false,
+            data: null
+        },
     }
 
-    constructor(private router: Router) {}
-    
-	private _submissionResult: any;
-	get submissionResult() {
-		if (!this._submissionResult) {
-			this.router.navigate(['/']);
-			return;
-		}
-		return this._submissionResult;
+    constructor(private router: Router) {
     }
-    
-	set submissionResult(value) {
-		this._submissionResult = value;
+
+    private _submissionResult: any;
+    get submissionResult() {
+        if (!this._submissionResult) {
+            this.router.navigate(['/']);
+            return;
+        }
+        return this._submissionResult;
     }
-    
+
+    set submissionResult(value) {
+        this._submissionResult = value;
+    }
+
     openModal(identifier, data?, type = null) {
         this.modals[identifier].opened = true;
         this.modals[identifier].data = data;
-        
+
         document.body.style.overflow = 'hidden';
     }
 
