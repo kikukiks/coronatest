@@ -17,7 +17,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     testing: FormGroup;
     location: FormGroup;
     general: FormGroup;
-    // travelling: FormGroup;
     exposure: FormGroup;
     symptoms: FormGroup;
     symptomsPeriod: FormGroup;
@@ -76,11 +75,6 @@ export class FormComponent implements OnInit, AfterViewInit {
             fever: new FormControl(false),
             cough: new FormControl(false),
             shortness_of_breath: new FormControl(false),
-            // fatigue: new FormControl(false),
-            // sputum_production: new FormControl(false),
-            // headache: new FormControl(false),
-            // diarrhea: new FormControl(false),
-            // pneumonia: new FormControl(false)
         });
 
         this.feverOptions = this.formBuilder.group({
@@ -101,7 +95,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // stepper index change
         this.stepper.selectionChange.subscribe(stepContents => {
             this.scrollToSectionHook(stepContents.selectedIndex);
         });
@@ -276,7 +269,6 @@ export class FormComponent implements OnInit, AfterViewInit {
                 gender: this.general.get('gender').value,
                 age: +this.general.get('age').value,
                 ...this.exposure.value,
-                high_risk_country: false,
                 latitude: this.location.get('latitude').value ? '' + this.location.get('latitude').value : null,
                 longitude: this.location.get('longitude').value ? '' + this.location.get('longitude').value : null,
                 symptoms: this.parseSymptomsToArray(this.symptoms.value),
@@ -298,6 +290,4 @@ export class FormComponent implements OnInit, AfterViewInit {
     parseSymptomsToArray(symptoms: any) {
         return Object.keys(symptoms).filter(key => symptoms[key] === true);
     }
-
-
 }
