@@ -128,10 +128,10 @@
 	"choose_close_contact_maybe": "If you have been in",
 	"in_close_contact": "close contact",
 	"choose_close_contact_maybe_continued": "with somebody who had respiratory symptoms, but you are not sure whether they were diagnosed with COVID-19, mark down „Maybe“.",
-	"your_answers_help_us": "",
-	"have_you_been_tested_or_examined": "",
-	"info": "",
-	"location_anonymous": "",
-	"location_anonymous_information": "",
-	"location_information_text": ""
+	"your_answers_help_us": "Your answers in turn help us assess and predict the spread of the virus in Estonia",
+	"have_you_been_tested_or_examined": "Have you already been referred for testing and/or been in contact with your general practitioner regarding COVID-19?",
+	"info": "Prior testing",
+	"location_anonymous": "Your location won't be used to identify you.",
+	"location_anonymous_information": "Click here for detailed consent terms.",
+	"location_information_text": "The Estonian Health Board and its processor (the Health and Welfare Information Systems' Centre) will use your location data until the end of the COVID-19 epidemic in Estonia to detect local outbreaks and direct resources. Your location data will not be used to identify you. Following the end of the epidemic, your location data shall be converted to the level of your local government and retained for a period of no more than three years in order to assess the effectiveness of local containment efforts and to draw relevant conclusions. Should the dataset include local governments with less than five residents, the location data shall be converted to the level of your county following the end of the epidemic to minimize the risk of identification."
 }

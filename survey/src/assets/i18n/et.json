@@ -129,9 +129,9 @@
 	"in_close_contact": "lähikontaktis",
 	"choose_close_contact_maybe_continued": "kellegagi, kel olid hingamisteede viirushaiguse sümptomid, aga te ei tea, kas tal on diagnoositud COVID-19, vastake „võib-olla“.",
 	"your_answers_help_us": "Teie vastused omakorda aitavad meil hinnata ja prognoosida viiruse levikut Eestis.",
-	"have_you_been_tested_or_examined": "Kas Teid on juba COVID-19 osas testitud ja/või perearsti poolt uuritud?",
+	"have_you_been_tested_or_examined": "Kas teid on juba suunatud testimisele ja/või olete olnud kontaktis oma perearstiga COVID-19 osas?",
 	"info": "Testimise info",
 	"location_anonymous": "Teie asukohta ei seostata Teie isikuga.",
 	"location_anonymous_information": "Vaata nõusoleku täpsemaid tingimusi",
-	"location_information_text": "Terviseamet ja tema volitatud töötleja kasutavad Teie asukohaandmeid COVID-19 epideemia lõpuni, et tuvastada kohalikke puhanguid ja suunata ressursse. Asukohaandmeid ei seostata Teie isikuga. Pärast epideemia lõppu viiakse asukohaandmed kohaliku omavalitsuse tasandile ja säilitatakse järelduste tegemiseks ja kasutatud meetmete tõhususe tagantjärele hindamiseks mitte rohkem kui kolm aastat. Kui andmestikku satub kohalikke omavalitsusi, kus on vähem kui 5 inimest, viiakse asukohaandmed maakonna tasandile, et minimeerida tuvastusriski."
+	"location_information_text": "Terviseamet ja tema volitatud töötleja (Tervise ja Heaolu Infosüsteemide Keskus) kasutavad Teie asukohaandmeid Eesti COVID-19 epideemia lõpuni, et tuvastada kohalikke puhanguid ja suunata ressursse. Asukohaandmeid ei seostata Teie isikuga. Pärast epideemia lõppu viiakse asukohaandmed kohaliku omavalitsuse tasandile ja säilitatakse järelduste tegemiseks ja kasutatud meetmete tõhususe tagantjärele hindamiseks mitte rohkem kui kolm aastat. Kui andmestikku satub kohalikke omavalitsusi, kus on vähem kui 5 inimest, viiakse asukohaandmed epideemia lõppedes maakonna tasandile, et minimeerida tuvastusriski."
 }
