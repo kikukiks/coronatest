@@ -80,6 +80,12 @@ export default class Submission extends Model<Submission> {
     chronic_conditions: boolean;
 
     @Column({
+        type: DataType.BOOLEAN,
+        allowNull: true
+    })
+    has_been_tested: boolean;
+
+    @Column({
         type: DataType.TEXT,
         allowNull: true
     })

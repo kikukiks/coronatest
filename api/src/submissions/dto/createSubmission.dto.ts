@@ -57,6 +57,10 @@ export class CreateSubmissionDto {
     @IsOptional()
     chronic_conditions: boolean;
 
+    @IsBoolean()
+    @IsOptional()
+    has_been_tested: boolean;
+
     @IsString()
     @IsOptional()
     email: string;
