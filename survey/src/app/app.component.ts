@@ -15,7 +15,7 @@ export class AppComponent {
     constructor(
         public layoutService: LayoutService,
         public router: Router,
-        private localeService: LocaleService,
+        public localeService: LocaleService,
         public pageService: PageService,
     ) {}
 }
