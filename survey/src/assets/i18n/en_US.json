@@ -127,5 +127,11 @@
 	"updated_at": "Last updated",
 	"choose_close_contact_maybe": "If you have been in",
 	"in_close_contact": "close contact",
-	"choose_close_contact_maybe_continued": "with somebody who had respiratory symptoms, but you are not sure whether they were diagnosed with COVID-19, mark down „Maybe“."
+	"choose_close_contact_maybe_continued": "with somebody who had respiratory symptoms, but you are not sure whether they were diagnosed with COVID-19, mark down „Maybe“.",
+	"your_answers_help_us": "",
+	"have_you_been_tested_or_examined": "",
+	"info": "",
+	"location_anonymous": "",
+	"location_anonymous_information": "",
+	"location_information_text": ""
 }

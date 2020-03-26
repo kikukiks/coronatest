@@ -127,5 +127,11 @@
 	"updated_at": "Последний раз обновлен",
 	"choose_close_contact_maybe": "Если вы находились в",
 	"in_close_contact": "тесном контакте",
-	"choose_close_contact_maybe_continued": "с кем-либо, у кого были выражены сумптомы вирусных заболеваний дыхательных путей, но вы не знаете, подтвержден ли у него лабораторно диагноз COVID-19, ответьте “Возможно“"
+	"choose_close_contact_maybe_continued": "с кем-либо, у кого были выражены сумптомы вирусных заболеваний дыхательных путей, но вы не знаете, подтвержден ли у него лабораторно диагноз COVID-19, ответьте “Возможно“",
+	"your_answers_help_us": "",
+	"have_you_been_tested_or_examined": "",
+	"info": "",
+	"location_anonymous": "",
+	"location_anonymous_information": "",
+	"location_information_text": ""
 }
