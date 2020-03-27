@@ -8,6 +8,7 @@ import { PageService } from "src/app/core/services/page.service";
     styleUrls: ["./landing.component.less"]
 })
 export class LandingComponent implements OnInit {
+
     constructor(
         public localeService: LocaleService,
         public pageService: PageService

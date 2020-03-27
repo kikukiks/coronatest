@@ -7,7 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 export class LocaleService {
 
-    public locale;
+    public locale = 'et';
 
     constructor(
         private translateService: TranslateService,

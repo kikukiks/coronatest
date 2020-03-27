@@ -13,11 +13,11 @@
             <ng-container *ngIf="localeService.locale">
                 <mat-form-field>
                     <mat-label>Keel/Language/Язык</mat-label>
-                    <mat-select [(ngModel)]="localeService.locale"
-                                (ngModelChange)="localeService.changeLocale(localeService.locale)">
-                        <mat-option value="et">{{'et' | translate}}</mat-option>
-                        <mat-option value="en_US">{{'en_US' | translate}}</mat-option>
-                        <mat-option value="ru">{{'ru' | translate}}</mat-option>
+                    <mat-select [(value)]="localeService.locale"
+                                (valueChange)="localeService.changeLocale(localeService.locale)">
+                        <mat-option value="et">Eesti</mat-option>
+                        <mat-option value="en_US">English</mat-option>
+                        <mat-option value="ru">Русский</mat-option>
                     </mat-select>
                 </mat-form-field>
             </ng-container>
