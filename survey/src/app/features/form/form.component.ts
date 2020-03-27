@@ -142,6 +142,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 } else {
                     stepContents.selectedStep.stepControl.controls['fever_temperature'].clearValidators();
                 }
+                stepContents.selectedStep.stepControl.controls['fever_temperature'].updateValueAndValidity();
             }
 
             this.currentStep = stepContents.selectedStep.stepControl;
