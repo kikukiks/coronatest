@@ -5,6 +5,7 @@ import {ApiService} from '../../core/services/api.service';
 import {Router} from '@angular/router';
 import {PageService} from 'src/app/core/services/page.service';
 import {LocaleService} from 'src/app/core/services/locale.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-form',
@@ -24,14 +25,33 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     loading = false;
 
-    public buttonDisabled = true;
+    public buttonDisabled = false;
     public buttonMethod;
     public buttonClass;
     public buttonText = 'next';
+    public currentStep = {};
     private formListener;
 
 
     hasFever = false;
+
+    counties = [
+        'harju',
+        'tartu',
+        'ida_viru',
+        'pärnu',
+        'lääne_viru',
+        'viljandi',
+        'rapla',
+        'võru',
+        'saare',
+        'jõgeva',
+        'järva',
+        'valga',
+        'põlva',
+        'lääne',
+        'hiiu',
+    ];
 
     @ViewChild('stepper', {static: true}) stepper: any;
 
@@ -44,17 +64,18 @@ export class FormComponent implements OnInit, AfterViewInit {
     ) {
 
         this.intent = this.formBuilder.group({
-            intent: new FormControl(null, [Validators.required])
+            intent: new FormControl(null, [Validators.required]),
         });
 
         this.chronic_conditions = this.formBuilder.group({
-            chronic_conditions: new FormControl(null, [Validators.required])
+            chronic_conditions: new FormControl(null, [Validators.required]),
         });
 
         this.location = this.formBuilder.group({
             shareLocation: new FormControl(null, [Validators.required]),
             longitude: new FormControl(null),
-            latitude: new FormControl(null)
+            latitude: new FormControl(null),
+            county: new FormControl(null),
         });
 
         this.general = this.formBuilder.group({
@@ -91,18 +112,31 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-
+        if (!environment.production) {
+            this.intent.patchValue({intent: 'family'});
+            this.chronic_conditions.patchValue({chronic_conditions: false});
+            this.location.patchValue({shareLocation: false});
+            this.general.patchValue({gender: 'male', age: 24});
+            this.exposure.patchValue({close_contact: 'yes'});
+            this.testing.patchValue({has_been_tested: false});
+        }
     }
 
     ngAfterViewInit() {
+        this.currentStep = this.stepper._steps._results[0].stepControl;
         this.stepper.selectionChange.subscribe(stepContents => {
+            console.log(stepContents);
+            this.currentStep = stepContents.selectedStep.stepControl;
             this.scrollToSectionHook(stepContents.selectedIndex);
+            // stepContents.selectedStep.stepControl.valueChanges.subscribe(res => {
+            //     console.log(res);
+            // });
         });
         this.scrollToSectionHook(0);
-        this.symptoms.valueChanges.subscribe(e => {
-            this.hasFever = !!this.symptoms.get('fever').value;
-            this.handleButtonUI(3);
-        });
+        // this.symptoms.valueChanges.subscribe(e => {
+        //     this.hasFever = !!this.symptoms.get('fever').value;
+        //     // this.handleButtonUI(3);
+        // });
     }
 
     getLocation(): void {
@@ -140,26 +174,26 @@ export class FormComponent implements OnInit, AfterViewInit {
                 scrollToElement.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
             }, 0);
         }
-        this.handleButtonUI(index);
+        // this.handleButtonUI(index);
     }
 
-    handleButtonUI(currentStepIndex) {
-        console.log(currentStepIndex);
-        const items = this.getStepItems(currentStepIndex);
-        if (items) {
-            this.buttonText = items.text;
-            this.buttonClass = items.class;
-            this.buttonMethod = items.method;
-            this.buttonDisabled = !items.form.valid || this.loading;
-
-            if (this.formListener) {
-                this.formListener.unsubscribe();
-            }
-            this.formListener = items.form.statusChanges.subscribe(status => {
-                this.buttonDisabled = status !== 'VALID';
-            });
-        }
-    }
+    // handleButtonUI(currentStepIndex) {
+    //     console.log(currentStepIndex);
+    //     const items = this.getStepItems(currentStepIndex);
+    //     if (items) {
+    //         this.buttonText = items.text;
+    //         this.buttonClass = items.class;
+    //         this.buttonMethod = items.method;
+    //         this.buttonDisabled = !items.form.valid || this.loading;
+    //
+    //         if (this.formListener) {
+    //             this.formListener.unsubscribe();
+    //         }
+    //         this.formListener = items.form.statusChanges.subscribe(status => {
+    //             this.buttonDisabled = status !== 'VALID';
+    //         });
+    //     }
+    // }
 
     getStepItems(currentStepIndex) {
         switch (currentStepIndex) {

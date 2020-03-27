@@ -1,6 +1,6 @@
 <div class="view-wrapper">
     <div class="symptoms-form">
-        <mat-vertical-stepper #stepper id="stepper">
+        <mat-vertical-stepper #stepper id="stepper" linear>
 
             <mat-step [stepControl]="intent">
                 <form [formGroup]="intent">
@@ -70,7 +70,7 @@
                 </form>
             </mat-step>
 
-            <mat-step *ngIf="symptoms.get('fever').value" [stepControl]="symptomsPeriod">
+            <mat-step [stepControl]="symptomsPeriod">
                 <form [formGroup]="feverOptions">
                     <ng-template matStepLabel>{{'fever' | translate}}</ng-template>
                     <h4>{{'how_high_fever' | translate}}</h4>
@@ -80,6 +80,7 @@
                     </mat-form-field>
                 </form>
             </mat-step>
+
             <mat-step [stepControl]="exposure">
                 <form [formGroup]="exposure">
                     <ng-template matStepLabel>{{'exposure' | translate}}</ng-template>
@@ -97,7 +98,7 @@
                     <p class="light">
                         {{'choose_close_contact_maybe' | translate}}
                         <a class="rand-link" target="_blank"
-                            (click)="pageService.openModal('close_contact')">{{ 'in_close_contact' | translate }}</a>
+                           (click)="pageService.openModal('close_contact')">{{ 'in_close_contact' | translate }}</a>
                         {{'choose_close_contact_maybe_continued' | translate}}
                     </p>
                 </form>
@@ -107,16 +108,31 @@
                 <form [formGroup]="location">
                     <ng-template matStepLabel>{{'location' | translate}}</ng-template>
                     <h4>{{'share_your_location_information' | translate}}</h4>
-                    <p>{{'location_anonymous' | translate}}</p>
-                    <br>
-                    <a (click)="pageService.openModal('location')">{{'location_anonymous_information' | translate}}</a>
-                    <br>
+                    <p>{{'location_anonymous' | translate}} <a
+                        (click)="pageService.openModal('location')">{{'location_anonymous_information' | translate}}</a>
+                    </p>
                     <br>
                     <mat-button-toggle-group formControlName="shareLocation" required>
-                        <mat-button-toggle value="true"
+                        <mat-button-toggle [value]="true"
                                            (click)="getLocation()">{{'share' | translate}}</mat-button-toggle>
-                        <mat-button-toggle value="false">{{'no_do_not_share' | translate}}</mat-button-toggle>
+                        <mat-button-toggle [value]="false">{{'no_do_not_share' | translate}}</mat-button-toggle>
                     </mat-button-toggle-group>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <form [formGroup]="location">
+                    <ng-template matStepLabel>{{'location' | translate}}</ng-template>
+                    <p>Kui olete nõus jagama infot maakonna kohta, kus viibite, siis palun valige rippmenüüst</p>
+                    <br>
+                    <mat-form-field>
+                        <mat-label>{{'county' | translate}}</mat-label>
+                        <mat-select formControlName="county">
+                            <mat-option *ngFor="let county of counties" [value]="county">
+                                {{county | translate}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </form>
             </mat-step>
 
@@ -134,9 +150,9 @@
         </mat-vertical-stepper>
 
         <div class="next-button-wrapper">
-            <button [disabled]="buttonDisabled || loading" [ngClass]="{'disabled': buttonDisabled || loading}"
+            <button [disabled]="loading || !currentStep['valid']" [ngClass]="{'disabled': !currentStep['valid'] || loading}"
                     class="btn-next-button {{buttonClass}}" mat-button
-                    (click)="buttonMethod(stepper)">
+                    (click)="nextStep(stepper)">
                 <ng-container *ngIf="!loading">
                     {{buttonText | translate}}
                 </ng-container>
