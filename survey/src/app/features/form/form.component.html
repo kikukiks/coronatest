@@ -1,6 +1,6 @@
 <div class="view-wrapper">
     <div class="symptoms-form">
-        <mat-vertical-stepper #stepper id="stepper" linear>
+        <mat-vertical-stepper #stepper id="stepper">
 
             <mat-step [stepControl]="intent">
                 <form [formGroup]="intent">
@@ -70,14 +70,27 @@
                 </form>
             </mat-step>
 
-            <mat-step [stepControl]="symptomsPeriod">
-                <form [formGroup]="feverOptions">
-                    <ng-template matStepLabel>{{'fever' | translate}}</ng-template>
-                    <h4>{{'how_high_fever' | translate}}</h4>
-                    <mat-form-field>
-                        <mat-label>{{ 'temperature' | translate }} </mat-label>
-                        <input matInput formControlName="fever_temperature" required>
-                    </mat-form-field>
+            <mat-step
+                *ngIf="symptoms.controls['fever'].value
+                || symptoms.controls['cough'].value
+                || symptoms.controls['shortness_of_breath'].value"
+                [stepControl]="symptomsOptions">
+                <form [formGroup]="symptomsOptions">
+                    <ng-template matStepLabel>{{'symptoms_options' | translate}}</ng-template>
+                    <ng-container *ngIf="symptoms.controls['fever'].value">
+                        <h4>{{'how_high_fever' | translate}}</h4>
+                        <mat-form-field>
+                            <mat-label>{{ 'temperature' | translate }} </mat-label>
+                            <input matInput formControlName="fever_temperature" required>
+                        </mat-form-field>
+                    </ng-container>
+                    <ng-container>
+                        <h4>{{'how_long_have_symptoms_persisted' | translate}}</h4>
+                        <mat-form-field>
+                            <mat-label>{{ 'number_of_days' | translate }} </mat-label>
+                            <input matInput type="tel" formControlName="symptoms_duration" required>
+                        </mat-form-field>
+                    </ng-container>
                 </form>
             </mat-step>
 
@@ -104,7 +117,7 @@
                 </form>
             </mat-step>
 
-            <mat-step>
+            <mat-step [stepControl]="location">
                 <form [formGroup]="location">
                     <ng-template matStepLabel>{{'location' | translate}}</ng-template>
                     <h4>{{'share_your_location_information' | translate}}</h4>
@@ -120,11 +133,10 @@
                 </form>
             </mat-step>
 
-            <mat-step>
+            <mat-step *ngIf="!location.controls['shareLocation'].value" [stepControl]="location">
                 <form [formGroup]="location">
                     <ng-template matStepLabel>{{'location' | translate}}</ng-template>
-                    <p>Kui olete nõus jagama infot maakonna kohta, kus viibite, siis palun valige rippmenüüst</p>
-                    <br>
+                    <h4>{{'please_select_county' | translate}}</h4>
                     <mat-form-field>
                         <mat-label>{{'county' | translate}}</mat-label>
                         <mat-select formControlName="county">
@@ -136,7 +148,7 @@
                 </form>
             </mat-step>
 
-            <mat-step>
+            <mat-step [stepControl]="testing">
                 <form [formGroup]="testing">
                     <ng-template matStepLabel>{{'info' | translate}}</ng-template>
                     <h4>{{'have_you_been_tested_or_examined' | translate}}</h4>
@@ -150,9 +162,10 @@
         </mat-vertical-stepper>
 
         <div class="next-button-wrapper">
-            <button [disabled]="loading || !currentStep['valid']" [ngClass]="{'disabled': !currentStep['valid'] || loading}"
+            <button [disabled]="loading || !currentStep['valid']"
+                    [ngClass]="{'disabled': !currentStep['valid'] || loading}"
                     class="btn-next-button {{buttonClass}}" mat-button
-                    (click)="nextStep(stepper)">
+                    (click)="getStepButton(stepper)">
                 <ng-container *ngIf="!loading">
                     {{buttonText | translate}}
                 </ng-container>

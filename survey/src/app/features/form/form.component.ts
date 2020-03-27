@@ -20,20 +20,15 @@ export class FormComponent implements OnInit, AfterViewInit {
     general: FormGroup;
     exposure: FormGroup;
     symptoms: FormGroup;
-    symptomsPeriod: FormGroup;
-    feverOptions: FormGroup;
+    symptomsOptions: FormGroup;
 
     loading = false;
 
-    public buttonDisabled = false;
-    public buttonMethod;
     public buttonClass;
     public buttonText = 'next';
     public currentStep = {};
-    private formListener;
 
-
-    hasFever = false;
+    submit = false;
 
     counties = [
         'harju',
@@ -98,11 +93,17 @@ export class FormComponent implements OnInit, AfterViewInit {
             shortness_of_breath: new FormControl(false),
         });
 
-        this.feverOptions = this.formBuilder.group({
+        this.symptomsOptions = this.formBuilder.group({
             fever_temperature: new FormControl(null, [
                 Validators.required,
                 Validators.min(36),
                 Validators.max(42),
+            ]),
+            symptoms_duration: new FormControl(null, [
+                Validators.required,
+                Validators.min(1),
+                Validators.max(200),
+                Validators.pattern('^[0-9]*$'),
             ]),
         });
 
@@ -126,17 +127,16 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.currentStep = this.stepper._steps._results[0].stepControl;
         this.stepper.selectionChange.subscribe(stepContents => {
             console.log(stepContents);
+            if (stepContents.selectedStep.stepControl.controls['has_been_tested']) {
+                this.submit = true;
+                this.buttonText = 'submit';
+            } else {
+                this.buttonText = 'next';
+            }
             this.currentStep = stepContents.selectedStep.stepControl;
             this.scrollToSectionHook(stepContents.selectedIndex);
-            // stepContents.selectedStep.stepControl.valueChanges.subscribe(res => {
-            //     console.log(res);
-            // });
         });
         this.scrollToSectionHook(0);
-        // this.symptoms.valueChanges.subscribe(e => {
-        //     this.hasFever = !!this.symptoms.get('fever').value;
-        //     // this.handleButtonUI(3);
-        // });
     }
 
     getLocation(): void {
@@ -174,122 +174,18 @@ export class FormComponent implements OnInit, AfterViewInit {
                 scrollToElement.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
             }, 0);
         }
-        // this.handleButtonUI(index);
     }
 
-    // handleButtonUI(currentStepIndex) {
-    //     console.log(currentStepIndex);
-    //     const items = this.getStepItems(currentStepIndex);
-    //     if (items) {
-    //         this.buttonText = items.text;
-    //         this.buttonClass = items.class;
-    //         this.buttonMethod = items.method;
-    //         this.buttonDisabled = !items.form.valid || this.loading;
-    //
-    //         if (this.formListener) {
-    //             this.formListener.unsubscribe();
-    //         }
-    //         this.formListener = items.form.statusChanges.subscribe(status => {
-    //             this.buttonDisabled = status !== 'VALID';
-    //         });
-    //     }
-    // }
-
-    getStepItems(currentStepIndex) {
-        switch (currentStepIndex) {
-            case 0:
-                return {
-                    form: this.intent,
-                    method: this.nextStep,
-                    class: '',
-                    text: 'next',
-                };
-            case 1:
-                return {
-                    form: this.general,
-                    method: this.nextStep,
-                    class: '',
-                    text: 'next',
-                };
-            case 2:
-                return {
-                    form: this.chronic_conditions,
-                    method: this.nextStep,
-                    class: '',
-                    text: 'next',
-                };
-            case 3:
-                return {
-                    form: this.symptoms,
-                    method: this.nextStep,
-                    class: '',
-                    text: 'next',
-                };
-            case 4:
-                if (!this.hasFever) {
-                    return {
-                        form: this.exposure,
-                        method: this.nextStep,
-                        class: '',
-                        text: 'next',
-                    };
-                } else {
-                    return {
-                        form: this.feverOptions,
-                        method: this.nextStep,
-                        class: '',
-                        text: 'next',
-                    };
-                }
-            case 5:
-                if (!this.hasFever) {
-                    return {
-                        form: this.location,
-                        method: this.nextStep,
-                        class: '',
-                        text: 'next',
-                    };
-                } else {
-                    return {
-                        form: this.exposure,
-                        method: this.nextStep,
-                        class: '',
-                        text: 'next',
-                    };
-                }
-            case 6:
-                if (!this.hasFever) {
-                    return {
-                        form: this.testing,
-                        method: this.submitForm,
-                        class: 'submit-btn',
-                        text: 'submit',
-                    };
-                }
-                return {
-                    form: this.location,
-                    method: this.nextStep,
-                    class: '',
-                    text: 'next',
-                };
-            case 7:
-                return {
-                    form: this.testing,
-                    method: this.submitForm,
-                    class: 'submit-btn',
-                    text: 'submit',
-                };
-            default:
-                return null;
+    getStepButton(stepper: MatStepper) {
+        if (this.submit) {
+            this.submitForm();
+        } else {
+            stepper.next();
         }
     }
 
-    nextStep(stepper: MatStepper) {
-        stepper.next();
-    }
-
-    submitForm(stepper: MatStepper) {
-        let fever_temperature = this.feverOptions.get('fever_temperature').value || null;
+    submitForm() {
+        let fever_temperature = this.symptomsOptions.get('fever_temperature').value || null;
         if (fever_temperature) {
             fever_temperature = fever_temperature.replace(',', '.');
             fever_temperature = +fever_temperature;
@@ -303,10 +199,12 @@ export class FormComponent implements OnInit, AfterViewInit {
                 gender: this.general.get('gender').value,
                 age: +this.general.get('age').value,
                 ...this.exposure.value,
+                county: this.location.controls['county'].value,
                 latitude: this.location.get('latitude').value ? '' + this.location.get('latitude').value : null,
                 longitude: this.location.get('longitude').value ? '' + this.location.get('longitude').value : null,
                 symptoms: this.parseSymptomsToArray(this.symptoms.value),
                 fever_temperature,
+                symptoms_duration: this.symptomsOptions.controls['symptoms_duration'].value,
             })
             .then(res => {
                 console.log(res);
