@@ -131,6 +131,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 this.submit = true;
                 this.buttonText = 'submit';
             } else {
+                this.submit = false;
                 this.buttonText = 'next';
             }
             this.currentStep = stepContents.selectedStep.stepControl;
@@ -204,7 +205,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 longitude: this.location.get('longitude').value ? '' + this.location.get('longitude').value : null,
                 symptoms: this.parseSymptomsToArray(this.symptoms.value),
                 fever_temperature,
-                symptoms_duration: this.symptomsOptions.controls['symptoms_duration'].value,
+                symptoms_duration: +this.symptomsOptions.controls['symptoms_duration'].value,
             })
             .then(res => {
                 console.log(res);
