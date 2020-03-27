@@ -50,7 +50,6 @@
 	"start": "Start",
 	"submit": "Submit",
 	"ip_address_consent": "By submitting this questionnaire, I agree to my IP address being logged for the Estonian Health Board to differentiate between multiple entries. Your IP will not be used to identify you.",
-	"": "",
 	"china": "China",
 	"south_korea": "South Korea",
 	"singapore": "Singapore",
@@ -154,6 +153,6 @@
 	"how_long_have_symptoms_persisted": "How many days have your symptoms persisted?",
 	"symptoms_duration": "Duration of symptoms",
 	"county": "County",
-	"symptoms_options": "Symptoms details",
+	"symptoms_options": "Symptom details",
 	"number_of_days": "Number of days"
 }

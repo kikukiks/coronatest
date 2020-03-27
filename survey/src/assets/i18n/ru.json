@@ -151,8 +151,8 @@
 	"lääne": "Ляэнемаа",
 	"hiiu": "Хийумаа",
 	"how_long_have_symptoms_persisted": "Сколько дней ваши симптомы уже продолжались?",
-	"symptoms_duration": "",
-	"county": "",
-	"symptoms_options": "",
-	"number_of_days": ""
+	"symptoms_duration": "Длительность симптомов",
+	"county": "Уезд",
+	"symptoms_options": "Уточнение симптомов",
+	"number_of_days": "Число дней"
 }
