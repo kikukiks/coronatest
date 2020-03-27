@@ -94,11 +94,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         });
 
         this.symptomsOptions = this.formBuilder.group({
-            fever_temperature: new FormControl(null, [
-                Validators.required,
-                Validators.min(36),
-                Validators.max(42),
-            ]),
+            fever_temperature: new FormControl(null),
             symptoms_duration: new FormControl(null, [
                 Validators.required,
                 Validators.min(1),
@@ -126,7 +122,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         this.currentStep = this.stepper._steps._results[0].stepControl;
         this.stepper.selectionChange.subscribe(stepContents => {
-            console.log(stepContents);
+
             if (stepContents.selectedStep.stepControl.controls['has_been_tested']) {
                 this.submit = true;
                 this.buttonText = 'submit';
@@ -134,6 +130,20 @@ export class FormComponent implements OnInit, AfterViewInit {
                 this.submit = false;
                 this.buttonText = 'next';
             }
+
+            // set fever temperature validators conditionally
+            if (stepContents.selectedStep.stepControl.controls['fever_temperature']) {
+                if (this.symptoms.controls['fever'].value) {
+                    stepContents.selectedStep.stepControl.controls['fever_temperature'].setValidators([
+                        Validators.required,
+                        Validators.min(36),
+                        Validators.max(42),
+                    ]);
+                } else {
+                    stepContents.selectedStep.stepControl.controls['fever_temperature'].clearValidators();
+                }
+            }
+
             this.currentStep = stepContents.selectedStep.stepControl;
             this.scrollToSectionHook(stepContents.selectedIndex);
         });
@@ -205,7 +215,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 longitude: this.location.get('longitude').value ? '' + this.location.get('longitude').value : null,
                 symptoms: this.parseSymptomsToArray(this.symptoms.value),
                 fever_temperature,
-                symptoms_duration: +this.symptomsOptions.controls['symptoms_duration'].value,
+                symptoms_duration: this.symptomsOptions.controls['symptoms_duration'].value ? +this.symptomsOptions.controls['symptoms_duration'].value : null,
             })
             .then(res => {
                 console.log(res);
