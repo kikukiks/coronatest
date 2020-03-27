@@ -23,6 +23,26 @@ export class CreateSubmissionDto {
     @IsOptional()
     longitude: string;
 
+    @IsEnum([
+        'harju',
+        'tartu',
+        'ida_viru',
+        'pärnu',
+        'lääne_viru',
+        'viljandi',
+        'rapla',
+        'võru',
+        'saare',
+        'jõgeva',
+        'järva',
+        'valga',
+        'põlva',
+        'lääne',
+        'hiiu'
+    ])
+    @IsOptional()
+    county: string;
+
     @IsEnum(['male', 'female'])
     @MaxLength(255)
     gender: string;
@@ -46,6 +66,12 @@ export class CreateSubmissionDto {
 
     @IsArray()
     symptoms: object;
+
+    @IsNumber()
+    @Min(1)
+    @Max(200)
+    @IsOptional()
+    symptoms_duration: number;
 
     @Min(36)
     @Max(50)

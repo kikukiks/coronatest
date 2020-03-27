@@ -29,6 +29,12 @@ export default class Submission extends Model<Submission> {
         type: DataType.TEXT,
         allowNull: true
     })
+    county: string;
+
+    @Column({
+        type: DataType.TEXT,
+        allowNull: true
+    })
     gender: string;
 
     @Column({
@@ -60,6 +66,12 @@ export default class Submission extends Model<Submission> {
         allowNull: true
     })
     symptoms: object;
+
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: true
+    })
+    symptoms_duration: string;
 
     @Column({
         type: DataType.DECIMAL(10, 2),
