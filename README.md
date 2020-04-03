@@ -1,6 +1,6 @@
 # Coronatest
 
-The live application can be seen [here](https://coronatest.ee).
+This application was developed during the [Hack the Crisis](http://garage48.org/events/hack-the-crisis) hackathon organized by Garage48 from the 13th to the 15th of March 2020. The live application can be seen [here](https://coronatest.ee).
 
 ## Authors
 
