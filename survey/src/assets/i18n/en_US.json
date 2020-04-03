@@ -50,6 +50,7 @@
 	"start": "Start",
 	"submit": "Submit",
 	"ip_address_consent": "By submitting this questionnaire, I agree to my IP address being logged for the Estonian Health Board to differentiate between multiple entries. Your IP will not be used to identify you.",
+	"ip_address_text": "The respondent's IP address shall be stored in depersonalized form in the data warehouse of the processor of the Health Board as two separate fields: a unique hash and an obfuscated IP address. A person cannot be identified based on either field. The unique hash shall be used to differentiate between multiple entries submitted by the same respondent. The obfuscated IP address has its final three digits removed and can be utilized without the processing of personal data to detect the respondent's country of residence in order to exclude other countries from samples representing the Estonian COVID-19 epidemic. The full IP address shall be stored in the server log of the Health Board's processor until the end of the Estonian COVID-19 epidemic in line with the security protocols of the processor. The full P address shall not be used to identify the respondent nor to analyze responses.",
 	"china": "China",
 	"south_korea": "South Korea",
 	"singapore": "Singapore",
