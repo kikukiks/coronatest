@@ -73,7 +73,7 @@
             <mat-step [stepControl]="additionalSymptoms">
                 <form [formGroup]="additionalSymptoms">
                     <ng-template matStepLabel>{{'symptoms' | translate}}</ng-template>
-                    <h4>{{'kas teil esineb mõni järgnevatest sümptomitest: tugev väsimus, isutus, lihasvalu, peavalu, kurguvalu, kõhulahtisus' | translate}}</h4>
+                    <h4>{{'do_you_have_additional_symptoms' | translate}}</h4>
                     <br>
                     <mat-button-toggle-group formControlName="additional_symptoms" required>
                         <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
