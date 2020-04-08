@@ -89,7 +89,7 @@ export class ResultsComponent implements OnInit {
             "close_people_no_quarantine"
         ],
         SCENARIO_12: [
-            "home_care_monitor",
+            "home_care_2_weeks",
             "call_your_general_practicioner",
             "check_your_health",
             "only_call_112_in_an_emergecny",
