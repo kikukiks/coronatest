@@ -68,7 +68,8 @@ export class SubmissionsService {
             // *** MODERATE SYMPTOMS ***
             else if (
                 (dto.fever_temperature >= 38 &&
-                    dto.symptoms.some(symptom => ['cough', 'shortness_of_breath'].includes(symptom))) ||
+                    (dto.symptoms.some(symptom => ['cough', 'shortness_of_breath'].includes(symptom)) ||
+                        dto.additional_symptoms === true)) ||
                 dto.symptoms.includes('shortness_of_breath')
             ) {
                 // medium symptoms + close contact
@@ -134,7 +135,6 @@ export class SubmissionsService {
             }
         }
         // *** HAS OTHER SYMPTOMS ***
-
         else if (dto.additional_symptoms === true) {
             // close contact yes
             if (dto.close_contact === 'yes') {
