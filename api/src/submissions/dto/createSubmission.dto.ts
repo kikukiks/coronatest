@@ -67,6 +67,10 @@ export class CreateSubmissionDto {
     @IsArray()
     symptoms: object;
 
+    @IsBoolean()
+    @IsOptional()
+    additional_symptoms: boolean;
+
     @IsNumber()
     @Min(1)
     @Max(200)

@@ -21,6 +21,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     exposure: FormGroup;
     symptoms: FormGroup;
     symptomsOptions: FormGroup;
+    additionalSymptoms: FormGroup;
 
     loading = false;
 
@@ -55,7 +56,6 @@ export class FormComponent implements OnInit, AfterViewInit {
         private apiService: ApiService,
         private router: Router,
         public pageService: PageService,
-        public localeService: LocaleService,
     ) {
 
         this.intent = this.formBuilder.group({
@@ -93,6 +93,11 @@ export class FormComponent implements OnInit, AfterViewInit {
             shortness_of_breath: new FormControl(false),
         });
 
+
+        this.additionalSymptoms = this.formBuilder.group({
+            additional_symptoms: new FormControl(null, [Validators.required]),
+        });
+
         this.symptomsOptions = this.formBuilder.group({
             fever_temperature: new FormControl(null),
             symptoms_duration: new FormControl(null, [
@@ -109,14 +114,14 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        // if (!environment.production) {
-        //     this.intent.patchValue({intent: 'family'});
-        //     this.chronic_conditions.patchValue({chronic_conditions: false});
-        //     this.location.patchValue({shareLocation: false});
-        //     this.general.patchValue({gender: 'male', age: 24});
-        //     this.exposure.patchValue({close_contact: 'yes'});
-        //     this.testing.patchValue({has_been_tested: false});
-        // }
+        if (!environment.production) {
+            this.intent.patchValue({intent: 'family'});
+            this.chronic_conditions.patchValue({chronic_conditions: false});
+            this.location.patchValue({shareLocation: false});
+            this.general.patchValue({gender: 'male', age: 24});
+            this.exposure.patchValue({close_contact: 'yes'});
+            this.testing.patchValue({has_been_tested: false});
+        }
     }
 
     ngAfterViewInit() {
@@ -217,6 +222,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 symptoms: this.parseSymptomsToArray(this.symptoms.value),
                 fever_temperature,
                 symptoms_duration: this.symptomsOptions.controls['symptoms_duration'].value ? +this.symptomsOptions.controls['symptoms_duration'].value : null,
+                ...this.additionalSymptoms.value,
             })
             .then(res => {
                 console.log(res);
