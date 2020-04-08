@@ -51,6 +51,7 @@
 	"submit": "Saada",
 	"ip_address_consent": "Küsimustiku täitmisega nõustun minu IP-aadressi salvestamisega korduvalt täidetud küsimustike eristamiseks Terviseameti poolt. Infot ei kasutata Teie isiku tuvastamiseks.",
 	"ip_address_text": "Vastaja IP aadress salvestatakse isikustamata kujul Terviseameti volitatud töötleja andmelattu, kus temast luuakse kaks andmevälja: unikaalne räsi ja hägustatud IP aadress. Kummagi andmevälja põhjal pole isikut võimalik tuvastada. Unikaalse räsi põhjal eristatakse ühe ja sama isiku poolt korduvalt täidetud küsimustikke. Hägustatud IP aadressi puhul on eemaldatud IP viimased kolm numbrit ning selle põhjal on võimalik isikuandmeid töötlemata tuvastada vastanud isiku asukohamaa, et välistada välismaal antud vastuste sattumist Eesti COVID-19 epideemiat puudutavasse valimisse. Täispikkuses IP aadress säilitatakse Terviseameti volitatud töötleja serveri logis kuni Eesti COVID-19 epideemia lõpuni volitatud töötlejale kehtestatud turvanõuete täitmiseks. Täispikkuses IP aadressi ei kasutata isiku tuvastamiseks ega laekunud vastuste analüüsimiseks.",
+	"": "",
 	"china": "Hiina",
 	"south_korea": "Lõuna-Korea",
 	"singapore": "Singapur",
@@ -161,5 +162,5 @@
 	"county": "Maakond",
 	"symptoms_options": "Sümptomite täpsustus",
 	"number_of_days": "Päevade arv",
-	"do_you_have_additional_symptoms": "kas teil esineb mõni järgnevatest sümptomitest: tugev väsimus, isutus, lihasvalu, peavalu, kurguvalu, kõhulahtisus"
+	"do_you_have_additional_symptoms": "Kas teil esineb mõni järgnevatest sümptomitest: tugev väsimus, isutus, lihasvalu, peavalu, kurguvalu, kõhulahtisus?"
 }

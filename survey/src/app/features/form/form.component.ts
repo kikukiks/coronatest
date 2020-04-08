@@ -113,14 +113,14 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        if (!environment.production) {
-            this.intent.patchValue({intent: 'family'});
-            this.chronic_conditions.patchValue({chronic_conditions: false});
-            this.location.patchValue({shareLocation: false});
-            this.general.patchValue({gender: 'male', age: 24});
-            this.exposure.patchValue({close_contact: 'yes'});
-            this.testing.patchValue({has_been_tested: false});
-        }
+        // if (!environment.production) {
+        //     this.intent.patchValue({intent: 'family'});
+        //     this.chronic_conditions.patchValue({chronic_conditions: false});
+        //     this.location.patchValue({shareLocation: false});
+        //     this.general.patchValue({gender: 'male', age: 24});
+        //     this.exposure.patchValue({close_contact: 'yes'});
+        //     this.testing.patchValue({has_been_tested: false});
+        // }
     }
 
     ngAfterViewInit() {

@@ -51,6 +51,7 @@
 	"submit": "Submit",
 	"ip_address_consent": "By submitting this questionnaire, I agree to my IP address being logged for the Estonian Health Board to differentiate between multiple entries. Your IP will not be used to identify you.",
 	"ip_address_text": "The respondent's IP address shall be stored in depersonalized form in the data warehouse of the processor of the Health Board as two separate fields: a unique hash and an obfuscated IP address. A person cannot be identified based on either field. The unique hash shall be used to differentiate between multiple entries submitted by the same respondent. The obfuscated IP address has its final three digits removed and can be utilized without the processing of personal data to detect the respondent's country of residence in order to exclude other countries from samples representing the Estonian COVID-19 epidemic. The full IP address shall be stored in the server log of the Health Board's processor until the end of the Estonian COVID-19 epidemic in line with the security protocols of the processor. The full P address shall not be used to identify the respondent nor to analyze responses.",
+	"": "",
 	"china": "China",
 	"south_korea": "South Korea",
 	"singapore": "Singapore",
@@ -88,8 +89,8 @@
 	"monitor_health_risk_group": "Monitor your health, particularly if you are over 60 years old or suffer from a chronic condition such as diabetes, lung disease or heart disease",
 	"call_your_gp_for_treatment": "Contact your general practitioner who will arrange your further examination and treatment.*",
 	"avoid_contact": "Stay at home for two weeks and avoid contact with others, if possible.",
-	"typical_symptoms_call_general_practicioner": "In case you develop symptoms (breathing difficulties; fever > 38 degrees with dry cough) or if your condition worsens, call your general practicioner.",
-	"stay_home_until_symtoms_gone": "",
+	"typical_symptoms_call_general_practicioner": "In case you develop symptoms (dry cough, fever, breathing difficulties) or if your condition worsens, call your general practicioner.",
+	"stay_home_until_symtoms_gone": "Stay home until your symptoms have resolved.",
 	"high_risk_severe_symptoms_message": "You're very likely infected with COVID-19 and require immediate medical attention.",
 	"high_risk_no_symptoms_message": "Although you're not showing symptoms of COVID-19, you might be infected.",
 	"high_risk_light_symptoms_message": "Although you are not displaying all the symptoms of COVID-19 or they are not severe, you might be infected.",
@@ -100,8 +101,8 @@
 	"risk_group_symptoms_message": "Your symptoms are indicative of a respiratory virus, which may be COVID-19. Due to your age and/or your chronic conditions, you are at risk of having a more severe course of the disease.",
 	"medium_risk_message": "Although you're not showing symptoms of COVID-19, an infection with the virus cannot be ruled out.",
 	"low_risk_medium_symptoms_message": "You have not knowningly been exposed to COVID-19, but your symptoms are indicative of a respiratory virus, which may be COVID-19.",
-	"high_risk_other_symptoms_message": "Although you have unspecific symptoms of COVID-19, you might be infected.",
-	"low_risk_other_symptoms_message": "Your symptoms are indicative of a respiratory virus, but you are not displaying the typical symptoms of COVID-19.",
+	"high_risk_other_symptoms_message": "Although you only have non-specific symptoms, you may be infected with COVID-19.",
+	"low_risk_other_symptoms_message": "Your symptoms are indicative of a respiratory virus, but are not specifically linked to COVID-19.",
 	"medium_risk_other_symptoms_message": "Although you have unspecific symptoms of COVID-19, an infection with the COVID-19 virus cannot be ruled out.",
 	"how_to_act": "How to act",
 	"how_to_act_health_board": "According to official instructions you should act as follows:",
@@ -161,5 +162,5 @@
 	"county": "County",
 	"symptoms_options": "Symptom details",
 	"number_of_days": "Number of days",
-	"do_you_have_additional_symptoms": ""
+	"do_you_have_additional_symptoms": "Are you displaying any of the following symptoms: significant fatigue, loss of appetite, muscle pain, headache, sore throat, diarrhea?"
 }
