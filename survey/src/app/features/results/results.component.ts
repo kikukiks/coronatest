@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from 'src/app/core/services/page.service';
-import { LocaleService } from 'src/app/core/services/locale.service';
 
 @Component({
     selector: 'app-results',
@@ -117,7 +116,6 @@ export class ResultsComponent implements OnInit {
 
     constructor(
         public pageService: PageService,
-        public localeService: LocaleService,
     ) {}
 
     ngOnInit() {

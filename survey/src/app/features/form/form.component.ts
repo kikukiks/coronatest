@@ -4,7 +4,6 @@ import {MatStepper} from '@angular/material/stepper';
 import {ApiService} from '../../core/services/api.service';
 import {Router} from '@angular/router';
 import {PageService} from 'src/app/core/services/page.service';
-import {LocaleService} from 'src/app/core/services/locale.service';
 import {environment} from '../../../environments/environment';
 
 @Component({
