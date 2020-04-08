@@ -78,7 +78,7 @@
 	"symptoms_call_general_practicioner_ambulance": "Sümptomite tekkimise korral sooritage see enesehindamistest uuesti",
 	"home_care_monitor": "Püsige koduravil kaks nädalat pärast sümptomite avaldumist.",
 	"monitor_health_detailed": "Jälgige oma tervist! Kui seisund halveneb (tekivad hingamisraskused; esineb palavik >38 kraadi koos kuiva köhaga) võtke ühendust oma perearstiga.",
-	"risk_group_contact_doctor": "Kui olete vanem kui 60 või Teil esineb mõni krooniline haigus nagu diabeet, kopsuhaigus või südamehaigus, jälgige oma tervist eriti hoolikalt. Kui Teie sümptomid püsivad kauem kui kolm päeva või süvenevad (palavik >38 kraadi, hingamisraskused või kehv üldseisund) võtke koheselt ühendust perearstiga.",
+	"risk_group_contact_doctor": "Kui olete vanem kui 60 või Teil esineb mõni krooniline haigus nagu diabeet, kopsuhaigus või südamehaigus, jälgige oma tervist eriti hoolikalt. Kui Teie sümptomid on püsinud kauem kui kolm päeva või süvenevad (palavik >38 kraadi, hingamisraskused või kehv üldseisund) võtke koheselt ühendust perearstiga.",
 	"close_people_no_quarantine": "Teavitage oma lähikontaktseid, et nad jälgiksid oma tervist, võimalusel püsiksid kodus, ja vajadusel sooritaksid selle enesehindamisküsimustiku edasiste juhiste saamiseks.",
 	"monitor_health_call_112": "Jälgige oma tervist! Kui seisund halveneb (tekivad hingamisraskused; esineb palavik >38 kraadi koos kuiva köhaga) võtke ühendust oma perearstiga.",
 	"retake_test_when_sick": "Haigussümptomite tekkimisel sooritage see enesehindamistest uuesti.",
@@ -88,6 +88,8 @@
 	"monitor_health_risk_group": "Jälgige tervist, eriti kui olete vanem kui 60 aastat või Teil esineb mõni krooniline haigus nagu diabeet, kopsuhaigus või südamehaigus.",
 	"call_your_gp_for_treatment": "Võtke ühendust oma perearstiga, kes korraldab Teie edasise uurimise ja ravi.*",
 	"avoid_contact": "Võimalusel püsige kaks nädalat kodus ja vältige kontakti teistega.",
+	"typical_symptoms_call_general_practicioner": "Tüüpiliste sümptomite (kuiv köha, palavik, õhupuudus) tekkimisel või seisundi halvenedes võtke ühendust oma perearstiga.",
+	"stay_home_until_symtoms_gone": "Püsige kodus kuni sümptomite taandumiseni.",
 	"high_risk_severe_symptoms_message": "Olete väga tõenäoliselt COVID-19 nakatunud ja vajate viivitamatut meditsiinilist järelvalvet.",
 	"high_risk_no_symptoms_message": "Ehkki Teil puuduvad COVID-19 sümptomid, võite olla nakatunud.",
 	"high_risk_light_symptoms_message": "Ehkki Teil pole kõiki COVID-19 viirusele omaseid sümptomeid või need sümptomid on kerged, võite olla nakatunud.",
@@ -98,6 +100,9 @@
 	"risk_group_symptoms_message": "Teie sümptomid viitavad hingamisteede viirushaigusele, mis võib olla COVID-19. Olete oma vanuse ja/või kaasuvate haiguste tõttu riskigrupis, mille tõttu võite haigust raskemini põdeda.",
 	"medium_risk_message": "Ehkki Teil puuduvad COVID-19 sümptomid, ei saa välistada, et olete nakatunud.",
 	"low_risk_medium_symptoms_message": "Te pole teadaolevalt puutunud kokku COVID-19 nakatunuga, kuid Teie sümptomid viitavad hingamisteede viirushaigusele, mis võib olla COVID-19.",
+	"high_risk_other_symptoms_message": "Ehkki teil on ainult ebaspetsiifilised sümptomid, võite olla nakatunud COVID-19 viirusesse.",
+	"low_risk_other_symptoms_message": "Teil võib olla mõni viirusinfektsioon, kuid teie nähud ei ole COVID-19 infektsioonile tüüpilised.",
+	"medium_risk_other_symptoms_message": "Ehkki Teil on ainult ebaspetsiifilised sümptomid, ei saa välistada, et olete nakatunud COVID-19 viirusesse.",
 	"how_to_act": "Tegevusjuhised",
 	"how_to_act_health_board": "Ametlike juhiste kohaselt käituge järgnevalt:",
 	"how_high_fever": "Kui kõrge on Teie palavik?",
@@ -155,5 +160,6 @@
 	"symptoms_duration": "Sümptomite kestus",
 	"county": "Maakond",
 	"symptoms_options": "Sümptomite täpsustus",
-	"number_of_days": "Päevade arv"
+	"number_of_days": "Päevade arv",
+	"do_you_have_additional_symptoms": "kas teil esineb mõni järgnevatest sümptomitest: tugev väsimus, isutus, lihasvalu, peavalu, kurguvalu, kõhulahtisus"
 }

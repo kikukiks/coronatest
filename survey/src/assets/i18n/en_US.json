@@ -78,7 +78,7 @@
 	"symptoms_call_general_practicioner_ambulance": "In case you develop symptoms, retake this self-assessment test.",
 	"home_care_monitor": "Stay at home for two weeks after symtpoms emerge.",
 	"monitor_health_detailed": "Monitor your health! If the condition worsens (breathing difficulties; fever > 38 degrees with dry cough) call your general practitioner",
-	"risk_group_contact_doctor": "If you are over 60 years old or you suffer from a chronic illness such as diabetes, lung disease or heart disease, monitor your health closely. If your symptoms persist beyond three days or worsen (fever >38 degrees, breathing difficulties or general deterioration), contact a general practitioner immediately ",
+	"risk_group_contact_doctor": "If you are over 60 years old or you suffer from a chronic illness such as diabetes, lung disease or heart disease, monitor your health closely. If your symptoms have persisted beyond three days or worsen (fever >38 degrees, breathing difficulties or general deterioration), contact a general practitioner immediately.",
 	"close_people_no_quarantine": "Inform those you have been in close contact with to monitor their health, stay home if possible, and to fill out this self-assessment questionnaire for further instructions if necessary",
 	"monitor_health_call_112": "Monitor your health! ",
 	"retake_test_when_sick": "In case you develop symptoms, retake this self-assessment questionnaire.",
@@ -88,6 +88,8 @@
 	"monitor_health_risk_group": "Monitor your health, particularly if you are over 60 years old or suffer from a chronic condition such as diabetes, lung disease or heart disease",
 	"call_your_gp_for_treatment": "Contact your general practitioner who will arrange your further examination and treatment.*",
 	"avoid_contact": "Stay at home for two weeks and avoid contact with others, if possible.",
+	"typical_symptoms_call_general_practicioner": "In case you develop symptoms (breathing difficulties; fever > 38 degrees with dry cough) or if your condition worsens, call your general practicioner.",
+	"stay_home_until_symtoms_gone": "",
 	"high_risk_severe_symptoms_message": "You're very likely infected with COVID-19 and require immediate medical attention.",
 	"high_risk_no_symptoms_message": "Although you're not showing symptoms of COVID-19, you might be infected.",
 	"high_risk_light_symptoms_message": "Although you are not displaying all the symptoms of COVID-19 or they are not severe, you might be infected.",
@@ -98,6 +100,9 @@
 	"risk_group_symptoms_message": "Your symptoms are indicative of a respiratory virus, which may be COVID-19. Due to your age and/or your chronic conditions, you are at risk of having a more severe course of the disease.",
 	"medium_risk_message": "Although you're not showing symptoms of COVID-19, an infection with the virus cannot be ruled out.",
 	"low_risk_medium_symptoms_message": "You have not knowningly been exposed to COVID-19, but your symptoms are indicative of a respiratory virus, which may be COVID-19.",
+	"high_risk_other_symptoms_message": "Although you have unspecific symptoms of COVID-19, you might be infected.",
+	"low_risk_other_symptoms_message": "Your symptoms are indicative of a respiratory virus, but you are not displaying the typical symptoms of COVID-19.",
+	"medium_risk_other_symptoms_message": "Although you have unspecific symptoms of COVID-19, an infection with the COVID-19 virus cannot be ruled out.",
 	"how_to_act": "How to act",
 	"how_to_act_health_board": "According to official instructions you should act as follows:",
 	"how_high_fever": "How high is your fever?",
@@ -155,5 +160,6 @@
 	"symptoms_duration": "Duration of symptoms",
 	"county": "County",
 	"symptoms_options": "Symptom details",
-	"number_of_days": "Number of days"
+	"number_of_days": "Number of days",
+	"do_you_have_additional_symptoms": ""
 }
