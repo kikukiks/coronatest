@@ -133,6 +133,41 @@ export class SubmissionsService {
                 };
             }
         }
+        // *** HAS OTHER SYMPTOMS ***
+
+        else if (dto.additional_symptoms === true) {
+            // close contact yes
+            if (dto.close_contact === 'yes') {
+                return {
+                    probability: 'HIGH',
+                    risk_message: 'high_risk_other_symptoms_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_13',
+                    scenario_description: 'Other symptoms, close contact'
+                };
+            }
+            // close contact maybe
+            else if (dto.close_contact === 'maybe') {
+                return {
+                    probability: 'MEDIUM',
+                    risk_message: 'medium_risk_other_symptoms_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_15',
+                    scenario_description: 'Other symptoms, maybe close contact'
+                };
+            }
+            // no close contact
+            else {
+                return {
+                    probability: 'LOW',
+                    risk_message: 'low_risk_other_symptoms_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_14',
+                    scenario_description: 'Other symptoms, no close contact'
+                };
+            }
+        }
+
         // *** NO SYMPTOMS ***
         else {
             // close contact yes
