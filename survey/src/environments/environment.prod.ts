@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiURL: 'https://api.coronatest.ee',
+    apiURL: 'https://koroonatest.ee/api',
 };

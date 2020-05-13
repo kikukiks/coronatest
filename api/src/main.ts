@@ -22,6 +22,9 @@ async function bootstrap() {
         origin: true,
         credentials: true
     });
+
+    app.setGlobalPrefix('api');
+
     await app.listen(3000);
 }
 bootstrap();
