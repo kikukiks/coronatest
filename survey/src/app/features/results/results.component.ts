@@ -32,47 +32,40 @@ export class ResultsComponent implements OnInit {
             'home_care_2_weeks',
             'monitor_health_detailed',
             'risk_group_contact_doctor',
-            'only_call_112_in_an_emergecny',
-            'exposed_persons_stay_home',
+            'only_call_112_in_an_emergecny'
         ],
         SCENARIO_4: [
             'home_care_2_weeks',
             'call_your_general_practicioner',
             'check_your_health',
-            'only_call_112_in_an_emergecny',
-            'exposed_persons_stay_home',
+            'only_call_112_in_an_emergecny'
         ],
         SCENARIO_5: [
             'wear_a_mask',
             'call_ambulance',
-            'isolate_until_ambulance_arrives',
-            'exposed_persons_stay_home',
+            'isolate_until_ambulance_arrives'
         ],
         SCENARIO_6: [
             'home_care_monitor',
             'monitor_health_detailed',
             'risk_group_contact_doctor',
             'only_call_112_in_an_emergecny',
-            'close_people_no_quarantine',
         ],
         SCENARIO_7: [
             'home_care_2_weeks',
             'call_your_general_practicioner',
             'check_your_health',
             'only_call_112_in_an_emergecny',
-            'close_people_no_quarantine',
         ],
         SCENARIO_8: [
             'call_your_gp_for_treatment',
             'quarantine_2_weeks',
             'only_call_112_in_an_emergecny',
-            'exposed_persons_stay_home',
         ],
         SCENARIO_9: [
             'call_your_gp_for_treatment',
             'quarantine_2_weeks',
             'only_call_112_in_an_emergecny',
-            'close_people_no_quarantine',
         ],
         SCENARIO_10: [
             'avoid_contact',
@@ -85,14 +78,12 @@ export class ResultsComponent implements OnInit {
             'monitor_health_detailed',
             'risk_group_contact_doctor',
             'only_call_112_in_an_emergecny',
-            'close_people_no_quarantine',
         ],
         SCENARIO_12: [
             'home_care_2_weeks',
             'call_your_general_practicioner',
             'check_your_health',
             'only_call_112_in_an_emergecny',
-            'close_people_no_quarantine',
         ],
         SCENARIO_13: [
             'quarantine_2_weeks',

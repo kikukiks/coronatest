@@ -64,46 +64,53 @@ export class SubmissionsService {
                     };
                 }
             }
+                
+            // medium symptoms + close contact
+            else if (dto.close_contact === 'yes') {
+                return {
+                    probability: 'HIGH',
+                    risk_message: 'high_risk_medium_symptoms_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_4',
+                    scenario_description: 'Moderate symptoms, close contact'
+                };
+            }
+            // medium symptoms + maybe close contact
+            else if (dto.close_contact === 'maybe') {
+                return {
+                    probability: 'MEDIUM',
+                    risk_message: 'medium_risk_medium_symptoms_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_12',
+                    scenario_description: 'Moderate symptoms, maybe close contact'
+                };
+            } else {
+                return {
+                    probability: 'LOW',
+                    risk_message: 'low_risk_medium_symptoms_message',
+                    act_message: 'how_to_act_health_board',
+                    scenario: 'SCENARIO_7',
+                    scenario_description: 'Moderate symptoms, no close contact'
+                };
+            }
 
             // *** MODERATE SYMPTOMS ***
+            /* 
             else if (
                 (dto.fever_temperature >= 38 &&
                     (dto.symptoms.some(symptom => ['cough', 'shortness_of_breath'].includes(symptom)) ||
                         dto.additional_symptoms === true)) ||
                 dto.symptoms.includes('shortness_of_breath')
             ) {
-                // medium symptoms + close contact
-                if (dto.close_contact === 'yes') {
-                    return {
-                        probability: 'HIGH',
-                        risk_message: 'high_risk_medium_symptoms_message',
-                        act_message: 'how_to_act_health_board',
-                        scenario: 'SCENARIO_4',
-                        scenario_description: 'Moderate symptoms, close contact'
-                    };
-                }
-                // medium symptoms + maybe close contact
-                else if (dto.close_contact === 'maybe') {
-                    return {
-                        probability: 'MEDIUM',
-                        risk_message: 'medium_risk_medium_symptoms_message',
-                        act_message: 'how_to_act_health_board',
-                        scenario: 'SCENARIO_12',
-                        scenario_description: 'Moderate symptoms, maybe close contact'
-                    };
-                } else {
-                    return {
-                        probability: 'LOW',
-                        risk_message: 'low_risk_medium_symptoms_message',
-                        act_message: 'how_to_act_health_board',
-                        scenario: 'SCENARIO_7',
-                        scenario_description: 'Moderate symptoms, no close contact'
-                    };
-                }
+
             }
+            */
+
 
             // *** MILD SYMPTOMS ***
             // fever or cough + close contact
+            
+            /* 
             else if (dto.close_contact === 'yes') {
                 return {
                     probability: 'HIGH',
@@ -133,6 +140,8 @@ export class SubmissionsService {
                     scenario_description: 'Mild symptoms, no close contact'
                 };
             }
+            */
+
         }
         // *** HAS OTHER SYMPTOMS ***
         else if (dto.additional_symptoms === true) {

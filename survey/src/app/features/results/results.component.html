@@ -8,8 +8,6 @@
                 <div class="bubble">{{ i + 1 }}</div>
                 <span [innerHTML]="instruction | translate"></span>
             </div>
-            <p *ngIf="pageService.submissionResult.scenario == 'SCENARIO_8' || pageService.submissionResult.scenario == 'SCENARIO_9'"
-               class="footnote" [innerHTML]="'testing_overview_link' | translate"></p>
         </div>
     </div>
 </div>
