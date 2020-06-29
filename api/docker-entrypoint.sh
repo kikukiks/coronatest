@@ -2,4 +2,4 @@
 
 npx sequelize-cli db:migrate
 
-npm start
+node ./dist/src/main.js
