@@ -52,7 +52,7 @@
         "@nestjs/swagger": "^4.3.2",
         "aws-sdk": "^2.632.0",
         "bcrypt": "^4.0.1",
-        "class-transformer": "^0.2.3",
+        "class-transformer": "^0.3.1",
         "class-validator": "^0.11.0",
         "connect-session-sequelize": "^6.1.1",
         "express-session": "^1.17.0",
